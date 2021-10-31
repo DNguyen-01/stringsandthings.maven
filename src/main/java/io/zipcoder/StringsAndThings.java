@@ -101,7 +101,7 @@ public class StringsAndThings {
             }
 
         }
-        return true; 
+        return true;
     }
 
 
@@ -114,6 +114,18 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
+        //similar to the test above, but instead of returning true or false. Keep count of the total triples in the
+        //inputs. How to identify the array has 3 of the same characters?
+int tripleCounter = 0;
+char[]  newInput = input.toCharArray();
+for (int index = 0; index < newInput.length; index = index + 1) {
+    char currentTriples = newInput[index];
+    if (currentTriples == "xxx") {
+        tripleCounter++;{
+            if (currentTriples )
+        }
+    }
+}
         return null;
     }
 }
