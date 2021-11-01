@@ -101,7 +101,7 @@ public class StringsAndThings {
             }
 
         }
-        return true; 
+        return true;
     }
 
 
@@ -109,11 +109,39 @@ public class StringsAndThings {
     /**
      * We'll say that a "triple" in a string is a char appearing three times in a row.
      * Return the number of triples in the given string. The triples may overlap.
-     * example :  countTriple("abcXXXabc") // Should return 1
+     * example :  countTriple("abcXXXabc") // Should return 1 - substring will be able to give you abc, xxx, abc
      *            countTriple("xxxabyyyycd") // Should return 3
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        //similar to the test above, but instead of returning true or false. Keep count of the total triples in the
+        //inputs. How to identify the array has 3 of the same characters in counts of 3, new search for the next three. abc--abc--bcd
+        int tripleCounter = 0;
+
+        for (int start = 0; start < input.length()-2; start = start + 1) {
+            //.length() is a method of a string
+            //subString(index piece of the string)
+            String currentSequence = input.substring(start, start+3);
+            // .substring(starts at the beginning of the index, ends at the given index range, but -1 position)
+            char[] currentLetters = currentSequence.toCharArray(); //this variable declares that we will take the currentSequence and turn it into an array
+            char firstLetter = currentLetters[0];
+            //currentLetters[0] - already gets the first letter position at 0 for viewing;
+            boolean allMatchingLetters = true; //title to contain if statement - this ones says all letters are the same,
+            for (int position = 1; position < currentLetters.length; position++){
+                //primitive data types does not need () in .length. Only if its in the class type
+                if (currentLetters[position] != firstLetter) {
+                    //if current position is not equal to firstLetter(current), set indicator to false
+                    allMatchingLetters = false;
+                    break;
+                    //break - is telling the computer that if the conditions are not met, cease searching on the rest of the array;
+                    //optimize way of saving time and processing
+                }
+            }
+            if (allMatchingLetters == true){
+                tripleCounter++;
+            }
+
+        }
+        return tripleCounter;
     }
 }
